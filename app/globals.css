@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+@theme {
+  --color-canvas: #FAF7F2;
+  --color-surface: #F3EDE2;
+  --color-surface-hover: #EDE4D5;
+  --color-cream: #FAF7F2;
+  --color-chocolate: #1C140F;
+  --color-espresso: #1C140F;
+  --color-gold: #A2752E;
+  --color-saffron: #A2752E;
+  --color-pistachio: #56674E;
+  --color-stone-line: #E5DDD0;
+
+  --font-serif: var(--font-cormorant), Georgia, serif;
+  --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+  background-color: var(--color-canvas);
+  color: var(--color-espresso);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: var(--color-saffron);
+  color: #FFFFFF;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  letter-spacing: -0.02em;
+}
