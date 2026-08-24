@@ -1,79 +1,135 @@
-# Tabrizi Bakery — Website Redesign Proposal
+# Tabrizi Bakery — Heritage Bakery Website
 
-> **Note:** This project is a private, client-facing website proposal concept for **Tabrizi Bakery** in Watertown, Massachusetts. It is designed to be honest, lightning fast, mobile-first, and easily reviewed by the business owner.
+An editorial, mobile-first website concept for Tabrizi Bakery, a Persian family bakery in Watertown, Massachusetts. The experience is designed to make the bakery's heritage, products and local presence feel as warm and premium online as they do in person.
 
----
+## Links
 
-## 🎯 Business Objectives & Proposed Solution
+- **Live demo:** [tabrizi-bakery.vercel.app](https://tabrizi-bakery.vercel.app/)
+- **Source code:** [github.com/RezaAshrafii/tabrizi-bakery-frontend](https://github.com/RezaAshrafii/tabrizi-bakery-frontend)
 
-| Business Challenge | Engineering & Design Solution |
-| :--- | :--- |
-| **Mobile customers need quick answers** | Sticky mobile utility bar with instant `Call`, `Directions`, and `Inquire` actions. |
-| **No online checkout confusion** | Clear communication: phone orders, holds, and direct in-person service without false ecommerce promises. |
-| **High local trust & discoverability** | Verified local schema (`Bakery` structured data), clear store hours, and lightweight Google Maps integration. |
-| **Content ownership & maintenance** | All facts, hours, text, and product details centralized in a single typed configuration (`content/site.ts`). |
-| **Brand authenticity** | Warm editorial design respecting Persian heritage without fabricated history, awards, or ingredients. |
+## What this project demonstrates
 
----
+- A focused landing-page experience for a local food business
+- Heritage-led storytelling instead of a generic template layout
+- Responsive navigation and content sections for mobile, tablet and desktop
+- Product presentation using optimized local WebP photography
+- Semantic markup, metadata, Open Graph fields and Bakery structured data
+- A clear path from brand story to products, location and contact call-to-action
+- Next.js static rendering with a small, component-based codebase
 
-## 📱 Mobile-First User Experience
+> This repository is a design and frontend showcase. Business details, opening hours, images, phone numbers and ordering links should be confirmed by the bakery before production use.
 
-- **Sticky Action Bar:** Mobile users get immediate 1-tap calling to `(617) 926-0880`, 1-tap Google Maps navigation to `56A Mount Auburn Street`, and smooth inquiry access.
-- **Click-to-Load Interactive Map:** Eliminates heavy third-party iframe lag on initial load, saving mobile data while maintaining full utility.
-- **Custom Order Inquiries:** An accessible inquiry form tailored for party platters, celebration boxes, and large family orders with clear status handling.
+## Tech stack
 
----
+- [Next.js 15](https://nextjs.org/) with the App Router
+- [React 19](https://react.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS 4](https://tailwindcss.com/)
+- [Lucide React](https://lucide.dev/) for interface icons
+- [Motion](https://motion.dev/) for lightweight section animation
+- Next Image/local WebP assets for image delivery
 
-## 🛠️ Architecture & Tech Stack
+## Main sections
 
-- **Framework:** Next.js 15 (App Router, React 19)
-- **Language:** TypeScript 5
-- **Styling:** Tailwind CSS (Modern token-based color system with warm cream, espresso, and restrained saffron accents)
-- **Icons:** Lucide React
-- **Centralized Content:** `content/site.ts`
+| Section | Purpose |
+| --- | --- |
+| Hero | Establishes the bakery's visual identity and primary action |
+| Products | Highlights Persian pastries, breads and giftable assortments |
+| Story | Communicates family heritage and craft |
+| Gallery | Shows the shop, display cases and product atmosphere |
+| Location | Provides the Watertown address, hours and visit context |
+| CTA | Gives visitors a direct next step |
 
----
+## Project structure
 
-## 🔒 Owner Review & Deployment Documents
-
-- [`OWNER_APPROVAL_CHECKLIST.md`](./OWNER_APPROVAL_CHECKLIST.md): Itemized breakdown of all facts, hours, product categories, and story copy for client sign-off.
-- [`ASSET_MANIFEST.md`](./ASSET_MANIFEST.md): Inventory of all imagery, source tracking, and permission statuses.
-- [`LAUNCH_CHECKLIST.md`](./LAUNCH_CHECKLIST.md): Domain connection, DNS records, indexing activation, and owner handoff.
-
----
-
-## 🚀 Local Development & Build
-
-### 1. Install Dependencies
-```bash
-npm install
+```text
+app/
+  globals.css       Global theme and styles
+  layout.tsx        Fonts, metadata and Bakery JSON-LD
+  page.tsx          Homepage composition
+  robots.ts         Robots metadata route
+  sitemap.ts        Sitemap metadata route
+components/
+  layout/            Navbar and Footer
+  motion/            Reusable animation variants
+  sections/          Hero, Products, Story, Gallery, Location and CTA
+lib/                 Shared utilities and image helpers
+public/images/       Local optimized WebP photography
 ```
 
-### 2. Run Local Development Server
+## Run locally
+
+Requirements: Node.js 20+ and npm.
+
 ```bash
+git clone https://github.com/RezaAshrafii/tabrizi-bakery-frontend.git
+cd tabrizi-bakery-frontend
+npm install
 npm run dev
 ```
-Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-### 3. Run Production Build & Type Check
-```bash
-npm run build
-```
+Open [http://localhost:3000](http://localhost:3000).
 
-### 4. Run Linter
+## Production checks
+
+Run these before publishing a change:
+
 ```bash
 npm run lint
+npm run build
+npm start
 ```
 
----
+The production server is then available at [http://localhost:3000](http://localhost:3000).
 
-## 🌐 Deploying a Private Preview
+## Deployment on Vercel
 
-1. Push to a private Git repository (GitHub / GitLab).
-2. Connect to [Vercel](https://vercel.com) or [Cloudflare Pages](https://pages.cloudflare.com).
-3. Set environment variable:
-   ```env
-   NEXT_PUBLIC_SITE_URL=https://your-preview-domain.vercel.app
-   NEXT_PUBLIC_ALLOW_INDEXING=false
-   ```
-4. Share the private preview link with the bakery owner for interactive review.
+1. Import the GitHub repository into [Vercel](https://vercel.com/new).
+2. Keep the detected framework as **Next.js**.
+3. Use `npm run build` as the build command and leave the output directory empty/default.
+4. Deploy.
+5. Add the final custom domain in **Project Settings → Domains** when the bakery confirms ownership.
+
+The current preview is deployed at [https://tabrizi-bakery.vercel.app/](https://tabrizi-bakery.vercel.app/).
+
+## Environment variables
+
+The current homepage does not require a secret to render. If AI Studio/Gemini features are enabled later, copy `.env.example` to `.env.local` and add the values through the local secret manager or Vercel Environment Variables. Never commit `.env.local` or a real API key.
+
+```bash
+Copy-Item .env.example .env.local
+```
+
+## SEO and discoverability
+
+The app includes:
+
+- Page title and description metadata
+- Open Graph and Twitter card metadata
+- `robots.txt` and `sitemap.xml` metadata routes
+- Bakery JSON-LD with address, phone, coordinates, opening hours and Instagram
+- Semantic section structure and descriptive image alt text
+
+Before a real launch, replace placeholder or unverified business data, add the final canonical domain, verify the Google Business Profile, and connect a real ordering/contact flow.
+
+## Performance notes
+
+Core photography is stored locally as WebP assets and rendered through Next Image. The repository also contains the recorded Lighthouse audit artifacts and [PERFORMANCE_AUDIT.md](./PERFORMANCE_AUDIT.md). Re-run Lighthouse after changing images, fonts or third-party scripts because scores depend on the deployed environment.
+
+## Roadmap for a production launch
+
+- Confirm all business facts and obtain written permission for brand assets
+- Add a real menu/order or catering inquiry flow
+- Add analytics only after confirming consent requirements
+- Add a custom domain and verify Search Console
+- Test keyboard navigation, reduced motion and mobile Safari
+- Add a CMS or small admin workflow if the menu changes frequently
+- Add image credits/licensing records for every externally supplied asset
+
+## Author
+
+Built by [Reza Ashrafi](https://github.com/RezaAshrafii), a statistics student and frontend developer interested in practical AI-assisted product development.
+
+## License
+
+No open-source license has been declared yet. Until the repository owner adds one, the source code and visual assets should be treated as **all rights reserved** and reused only with permission.
